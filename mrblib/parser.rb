@@ -6,7 +6,7 @@ module HtmlParser
     end
 
     def skip_space
-      while (ch = @stream.getchar) == ' ' or ch == '\n'
+      while (ch = @stream.getchar) == " " or ch == "\n" or ch == "\t"
       end
 
       ch
@@ -28,7 +28,7 @@ module HtmlParser
 
       attrs = tagstr.split
       tagname = attrs[0].downcase
-      Tags::TagTab[tagname].new(attrs)
+      Tags::TagTab[tagname].new(attrs, st_ed)
     end
 
     def parse_tag

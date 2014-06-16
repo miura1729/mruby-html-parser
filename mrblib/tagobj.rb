@@ -19,27 +19,42 @@ module HtmlParser
       end
     end
 
-    class TagHtml<Tag
+    class HtmlTag<Tag
       attr :attr
+      attr :endp
 
-      def initialize(attr)
+      def initialize(attr, st_ed)
         @attr = attr
+        @endp = (st_ed == :endtag)
         super
       end
     end
 
-    class TagBody<Tag
-      attr :attr
+    class TagHtml<HtmlTag
+    end
 
-      def initialize(attr)
-        @attr = attr
-        super
-      end
+    class TagHead<HtmlTag
+    end
+
+    class TagBody<HtmlTag
+    end
+
+    class TagStyle<HtmlTag
+    end
+
+    class TagDiv<HtmlTag
+    end
+
+    class TagSpan<HtmlTag
     end
 
     TagTab = {
       "html" => TagHtml,
+      "head" => TagHead,
       "body" => TagBody,
+      "style" => TagStyle,
+      "div" => TagDiv,
+      "span" => TagSpan,
     }
   end
 end
