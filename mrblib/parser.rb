@@ -27,8 +27,13 @@ module HtmlParser
       end
 
       attrs = tagstr.split
+      attrh = {}
+      attrs[1..-1].each do |at|
+        att = at.split('=')
+        attrh[att[0]] = att[1]
+      end
       tagname = attrs[0].downcase
-      Tags::TagTab[tagname].new(attrs, st_ed)
+      Tags::TagTab[tagname].new(attrh, st_ed)
     end
 
     def parse_tag

@@ -6,7 +6,7 @@ module HtmlParser
 
       def initialize(*args)
         @parent = nil
-        @child = nil
+        @child = []
       end
     end
 
@@ -28,6 +28,9 @@ module HtmlParser
         @endp = (st_ed == :endtag)
         super
       end
+    end
+
+    class TagRoot<HtmlTag
     end
 
     class TagHtml<HtmlTag
